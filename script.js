@@ -9,6 +9,11 @@ let cobra = [
     }
 ];
 
+let comida = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+};
+
 let direcao = 'right';
 
 function criarFundo() {
@@ -23,8 +28,12 @@ function criarCobra() {
     }
 }
 
-document.addEventListener('keydown', atualizarJogo);
+function criarComida() {
+    context.fillStyle = 'red';
+    context.fillRect(comida.x, comida.y, box, box);
+}
 
+document.addEventListener('keydown', atualizarJogo);
 function atualizarJogo(evento) {
     if (evento.keyCode == 37 && direcao != 'right') direcao = 'left';
     if (evento.keyCode == 38 && direcao != 'down') direcao = 'up';
@@ -40,6 +49,7 @@ function iniciarJogo() {
 
     criarFundo();
     criarCobra();
+    criarComida();
 
     let cobraX = cobra[0].x;
     let cobraY = cobra[0].y;
