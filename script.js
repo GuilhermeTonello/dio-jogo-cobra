@@ -59,7 +59,12 @@ function iniciarJogo() {
     if (direcao == 'up') cobraY -= box;
     if (direcao == 'down') cobraY += box;
 
-    cobra.pop();
+    if (cobraX != comida.x || cobraY != comida.y) {
+        cobra.pop();
+    } else {
+        comida.x = Math.floor(Math.random() * 15 + 1) * box;
+        comida.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
 
     let cabeca = {
         x: cobraX,
