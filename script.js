@@ -23,7 +23,21 @@ function criarCobra() {
     }
 }
 
+document.addEventListener('keydown', atualizarJogo);
+
+function atualizarJogo(evento) {
+    if (evento.keyCode == 37 && direcao != 'right') direcao = 'left';
+    if (evento.keyCode == 38 && direcao != 'down') direcao = 'up';
+    if (evento.keyCode == 39 && direcao != 'left') direcao = 'right';
+    if (evento.keyCode == 40 && direcao != 'up') direcao = 'down';
+}
+
 function iniciarJogo() {
+    if (cobra[0].x > 15 * box && direcao == 'right') cobra[0].x = 0;
+    if (cobra[0].x < 0 && direcao == 'left') cobra[0].x = 15 * box;
+    if (cobra[0].y > 15 * box && direcao == 'down') cobra[0].y = 0;
+    if (cobra[0].y < 0 && direcao == 'up') cobra[0].y = 15 * box;
+
     criarFundo();
     criarCobra();
 
@@ -31,9 +45,9 @@ function iniciarJogo() {
     let cobraY = cobra[0].y;
 
     if (direcao == 'right') cobraX += box;
-    else if (direcao == 'left') cobraX -= box;
-    else if (direcao == 'up') cobraY -= box;
-    else if (direcao == 'down') cobraY += box;
+    if (direcao == 'left') cobraX -= box;
+    if (direcao == 'up') cobraY -= box;
+    if (direcao == 'down') cobraY += box;
 
     cobra.pop();
 
