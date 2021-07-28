@@ -9,4 +9,4 @@ Curso realizado a partir do Bootcamp HTML Web Developer da Digital Innovation On
 
 ## Imagens:
 #### Página (Desktop):
-![pagina desktop](https://github.com/GuilhermeTonello/dio-jogo-cobra/blob/master/jogo-cobra.png.png?raw=true)
+![pagina desktop](https://github.com/GuilhermeTonello/dio-jogo-cobra/blob/master/jogo-cobra.png?raw=true)
