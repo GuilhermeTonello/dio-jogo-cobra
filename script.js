@@ -14,6 +14,8 @@ let comida = {
     y: Math.floor(Math.random() * 15 + 1) * box
 };
 
+let pontos = 0;
+
 let direcao = 'right';
 
 function criarFundo() {
@@ -42,6 +44,8 @@ function atualizarJogo(evento) {
 }
 
 function iniciarJogo() {
+
+
     if (cobra[0].x > 15 * box && direcao == 'right') cobra[0].x = 0;
     if (cobra[0].x < 0 && direcao == 'left') cobra[0].x = 15 * box;
     if (cobra[0].y > 15 * box && direcao == 'down') cobra[0].y = 0;
@@ -59,11 +63,21 @@ function iniciarJogo() {
     if (direcao == 'up') cobraY -= box;
     if (direcao == 'down') cobraY += box;
 
+    for (let i = 1; i < cobra.length; i++) {
+        if (cobra[0].x == cobra[i].x && cobra[0].y == cobra[i].y) {
+            clearInterval(jogo);
+            alert('Acabou o Jogo. Total de pontos: ' + pontos);
+            pontos = 0;
+            location.reload();
+        } 
+    }
+
     if (cobraX != comida.x || cobraY != comida.y) {
         cobra.pop();
     } else {
         comida.x = Math.floor(Math.random() * 15 + 1) * box;
         comida.y = Math.floor(Math.random() * 15 + 1) * box;
+        pontos++;
     }
 
     let cabeca = {
